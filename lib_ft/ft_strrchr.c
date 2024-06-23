@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adahroug <adahroug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 18:03:02 by adahroug          #+#    #+#             */
-/*   Updated: 2024/06/23 22:01:05 by adahroug         ###   ########.fr       */
+/*   Created: 2024/06/13 20:58:38 by adahroug          #+#    #+#             */
+/*   Updated: 2024/06/23 22:18:58 by adahroug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	int	i;
+	char	*last_occurrence;
+	char	*s;
 
-	i = 0;
-	if (str == NULL)
-		return (0);
-	while (str[i] != '\0')
+	last_occurrence = NULL;
+	s = (char *)str;
+	while (*s != '\0')
 	{
-		if (str[i] == c)
-		{
-			return ((char *)&str[i]);
-		}
-		i++;
+		if (*s == (char)c)
+			last_occurrence = s;
+		s++;
 	}
-	if (c == '\0')
-	{
-		return ((char *)&str[i]);
-	}
-	return (NULL);
+	if ((char)c == '\0')
+		return (s);
+	return (last_occurrence);
 }
